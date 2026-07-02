@@ -4,27 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2026年7月 ドラゴンボール商品スケジュール</title>
+  <title>ドラゴンボール商品スケジュール</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- アプリアイコン（ホーム画面追加用） -->
+  <link rel="apple-touch-icon" href="DB.jpeg">
+  <link rel="icon" href="DB.jpeg">
+
   <style>
     body {
       font-family: 'Noto Sans JP', sans-serif;
       background-color: #f3f4f6;
     }
+    /* アクティブな月タブのスタイル */
+    .month-tab.active {
+      background-color: #f97316; /* Tailwind orange-500 */
+      color: white;
+      border-color: #f97316;
+    }
+    /* 画像がない場合のスタイル */
+    .no-image-box {
+      background-color: #e5e7eb;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      text-align: center;
+    }
   </style>
   <!-- OGPの基本設定 -->
   <meta property="og:url" content="https://majestic-vacherin-a1e048.netlify.app/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="🐉 2026年7月 ドラゴンボール 商品展開スケジュール" />
-  <meta property="og:description" content="一番くじ、フィギュア、TCGなど、7月のドラゴンボール関連商品の発売・予約スケジュールまとめ。" />
-  <meta property="og:image" content="https://majestic-vacherin-a1e048.netlify.app/DB.png" />
+  <meta property="og:title" content="🐉 ドラゴンボール 商品展開スケジュール" />
+  <meta property="og:description" content="一番くじ、フィギュア、TCGなど、ドラゴンボール関連商品の発売・予約スケジュールまとめ。" />
+  <meta property="og:image" content="https://majestic-vacherin-a1e048.netlify.app/DB.jpeg" />
 
   <!-- X（旧Twitter）専用の設定 -->
-  <meta name="twitter:card" content="summary_large_image" /> <!-- 大きな画像で表示する設定 -->
-  <meta name="twitter:title" content="🐉 2026年7月 ドラゴンボール 商品展開スケジュール" />
-  <meta name="twitter:description" content="一番くじ、フィギュア、TCGなど、7月のドラゴンボール関連商品の発売・予約スケジュールまとめ。" />
-  <meta name="twitter:image" content="https://majestic-vacherin-a1e048.netlify.app/DB.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🐉 ドラゴンボール 商品展開スケジュール" />
+  <meta name="twitter:description" content="一番くじ、フィギュア、TCGなど、ドラゴンボール関連商品の発売・予約スケジュールまとめ。" />
+  <meta name="twitter:image" content="https://majestic-vacherin-a1e048.netlify.app/DB.jpeg" />
 
 </head>
 <body class="min-h-screen pb-12 antialiased">
@@ -32,11 +53,11 @@
   <!-- スクショ・閲覧用メインコンテナ -->
   <div class="max-w-2xl mx-auto mt-4 bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
     
-    <!-- ヘッダー (ホワイトテーマ用明るいオレンジグラデーション) -->
+    <!-- ヘッダー -->
     <div class="bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-500 p-6 text-center">
       <span class="bg-white/20 text-white text-xs font-black tracking-widest px-3 py-1 rounded-full uppercase">Dragon Ball IP Schedule</span>
       <h1 class="text-2xl md:text-3xl font-black text-white tracking-wide drop-shadow-md mt-2">
-        🐉 2026年7月 ドラゴンボール
+        🐉 2026年 下半期
       </h1>
       <p class="text-orange-50 font-bold mt-1 text-sm md:text-base">マルチチャネル商品展開・マーケティング戦略スケジュール</p>
     </div>
@@ -44,122 +65,33 @@
     <!-- コンテンツ部分 -->
     <div class="p-4 md:p-6 bg-gray-50 space-y-4">
 
-      <!-- フィルターコントロール (ホワイトテーマに合わせた明るいデザイン) -->
-      <div class="bg-white p-2.5 rounded-xl shadow-sm border border-gray-200 flex flex-wrap justify-center gap-1.5 md:gap-2">
-        <button onclick="filterCategory('all')" class="filter-btn active bg-orange-500 text-white text-xs font-bold px-3.5 py-2 rounded-lg transition hover:opacity-90 shadow-sm">すべて</button>
-        <button onclick="filterCategory('予約開始')" class="filter-btn bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 text-xs font-bold px-3.5 py-2 rounded-lg transition">予約開始</button>
-        <button onclick="filterCategory('発売')" class="filter-btn bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 text-xs font-bold px-3.5 py-2 rounded-lg transition">発売</button>
-        <button onclick="filterCategory('プライズ')" class="filter-btn bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 text-xs font-bold px-3.5 py-2 rounded-lg transition">プライズ</button>
-        <button onclick="filterCategory('発送')" class="filter-btn bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 text-xs font-bold px-3.5 py-2 rounded-lg transition">発送</button>
-        <button onclick="filterCategory('イベント')" class="filter-btn bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 text-xs font-bold px-3.5 py-2 rounded-lg transition">イベント</button>
+      <!-- フィルターコントロール -->
+      <div class="space-y-3">
+        <!-- 月別タブ (JSで動的に生成されます) -->
+        <div id="month-tabs-container" class="flex flex-wrap justify-center gap-1.5 md:gap-2 pb-2 border-b border-gray-200">
+          <!-- ここにタブが自動生成される -->
+        </div>
+
+        <!-- 種別フィルター -->
+        <div class="bg-white p-2.5 rounded-xl shadow-sm border border-gray-200 flex flex-wrap justify-center gap-1.5 md:gap-2">
+          <button onclick="filterCategory('all')" class="filter-btn active bg-orange-500 text-white text-xs font-bold px-3.5 py-2 rounded-lg transition hover:opacity-90 shadow-sm">すべて</button>
+          <button onclick="filterCategory('予約開始')" class="filter-btn bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 text-xs font-bold px-3.5 py-2 rounded-lg transition">予約開始</button>
+          <button onclick="filterCategory('発売')" class="filter-btn bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 text-xs font-bold px-3.5 py-2 rounded-lg transition">発売</button>
+          <button onclick="filterCategory('プライズ')" class="filter-btn bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 text-xs font-bold px-3.5 py-2 rounded-lg transition">プライズ</button>
+          <button onclick="filterCategory('発送')" class="filter-btn bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 text-xs font-bold px-3.5 py-2 rounded-lg transition">発送</button>
+          <button onclick="filterCategory('イベント')" class="filter-btn bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 text-xs font-bold px-3.5 py-2 rounded-lg transition">イベント</button>
+        </div>
       </div>
 
       <!-- リスト一覧 -->
       <div id="schedule-list" class="space-y-2.5">
         
-        <!-- ==================== コメントアウトのテンプレート群 ==================== -->
-        <!--予約
-        <a href="https://tamashiiweb.com/item_brand/changearts/" target="_blank" rel="noopener noreferrer" data-type="予約開始" data-date="1" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-blue-500 hover:bg-blue-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="1.png" alt="CHANGEARTS" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/3b82f6/ffffff?text=1.png';">
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex flex-wrap items-center gap-1.5 mb-1">
-              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">7月1日(水)</span>
-              <span class="bg-blue-100 text-blue-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">予約開始</span>
-              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">変形玩具</span>
-            </div>
-            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">CHANGEARTS ホイポイカプセル（No.1, No.9, No.433, No.576）</p>
-          </div>
-          <div class="text-gray-400 pr-1 flex-shrink-0">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-          </div>
-        </a>
-        -->
-
-        <!--発売
-        <a href="https://www.dbs-cardgame.com/fw/jp/news/01_467.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="3" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="2.png" alt="最強ジャンプ" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=2.png';">
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex flex-wrap items-center gap-1.5 mb-1">
-              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">7月3日(金)</span>
-              <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発売</span>
-              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">書籍付録</span>
-            </div>
-            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">最強ジャンプ 2026年8月号 (DBFWカード「孫悟飯：SH」付録)</p>
-          </div>
-          <div class="text-gray-400 pr-1 flex-shrink-0">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-          </div>
-        </a>
-        -->
-
-        <!--プライズ
-        <a href="https://bsp-prize.jp/item/2789447/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-date="7" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="4.png" alt="セル" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/10b981/ffffff?text=4.png';">
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex flex-wrap items-center gap-1.5 mb-1">
-              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">7月7日(火)</span>
-              <span class="bg-green-100 text-green-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">プライズ</span>
-              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
-            </div>
-            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ドラゴンボールZ MATCH MAKERS セル（VS人造人間16号）</p>
-          </div>
-          <div class="text-gray-400 pr-1 flex-shrink-0">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-          </div>
-        </a>
-        -->
-
-        <!--イベント
-        <a href="https://en.dragon-ball-official.com/news/01_4220.html" target="_blank" rel="noopener noreferrer" data-type="イベント" data-date="23.5" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-yellow-500 hover:bg-yellow-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="16.png" alt="SDCC" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/eab308/ffffff?text=16.png';">
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex flex-wrap items-center gap-1.5 mb-1">
-              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">7月23日〜26日</span>
-              <span class="bg-yellow-100 text-yellow-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">イベント</span>
-              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">海外限定品</span>
-            </div>
-            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">SDCC 2026 海外限定 S.H.Figuarts（ゴテンクス、ゴジータ、DAIMA悟空）</p>
-          </div>
-          <div class="text-gray-400 pr-1 flex-shrink-0">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-          </div>
-        </a>
-        -->
-
-        <!--発送
-        <a href="https://p-bandai.jp/item/item-1000236267/?srsltid=AfmBOopBVF-Oos7y1eKfkSFwMmhTUpqbDCPPvzon1-W8xpOG3Uet4jrB" target="_blank" rel="noopener noreferrer" data-type="発送" data-date="99" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="26.png" alt="怒りの戦士" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/a855f7/ffffff?text=26.png';">
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex flex-wrap items-center gap-1.5 mb-1">
-              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">7月（順次）</span>
-              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発送</span>
-              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">アクション</span>
-            </div>
-            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】S.H.Figuarts 超サイヤ人孫悟空＜怒りの戦士＞</p>
-          </div>
-          <div class="text-gray-400 pr-1 flex-shrink-0">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-          </div>
-        </a>
-        -->
-
-
-        <!-- ==================== ここから日付順のリストアイテム ==================== -->
+        <!-- ==================== 7月のアイテム ==================== -->
 
         <!-- 1. CHANGEARTS (7月1日) -->
-        <a href="https://tamashiiweb.com/item_brand/changearts/" target="_blank" rel="noopener noreferrer" data-type="予約開始" data-date="1" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-blue-500 hover:bg-blue-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="1.png" alt="CHANGEARTS" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/3b82f6/ffffff?text=1.png';">
+        <a href="https://tamashiiweb.com/item_brand/changearts/" target="_blank" rel="noopener noreferrer" data-type="予約開始" data-month="7" data-date="1" data-datestr="7月1日(水)" data-cat="変形玩具" data-title="CHANGEARTS ホイポイカプセル（No.1, No.9, No.433, No.576）" data-img="1.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-blue-500 hover:bg-blue-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="1.png" alt="CHANGEARTS" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -174,10 +106,10 @@
           </div>
         </a>
 
-        <!-- 28. フィギュアーツZERO [STARTune] 悟空 (7月1日) [追加分] -->
-        <a href="https://tamashiiweb.com/item/15909/" target="_blank" rel="noopener noreferrer" data-type="予約開始" data-date="1" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-blue-500 hover:bg-blue-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="28.png" alt="フィギュアーツZERO" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/3b82f6/ffffff?text=28.png';">
+        <!-- 28. フィギュアーツZERO [STARTune] 悟空 (7月1日) -->
+        <a href="https://tamashiiweb.com/item/15909/" target="_blank" rel="noopener noreferrer" data-type="予約開始" data-month="7" data-date="1" data-datestr="7月1日(水)" data-cat="フィギュア" data-title="フィギュアーツZERO [STARTune] 孫悟空-決戦場への到着-" data-img="28.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-blue-500 hover:bg-blue-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="28.png" alt="フィギュアーツZERO" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -193,9 +125,9 @@
         </a>
 
         <!-- 2. 最強ジャンプ (7月3日) -->
-        <a href="https://www.dbs-cardgame.com/fw/jp/news/01_467.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="3" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="2.png" alt="最強ジャンプ" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=2.png';">
+        <a href="https://www.dbs-cardgame.com/fw/jp/news/01_467.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="7" data-date="3" data-datestr="7月3日(金)" data-cat="書籍付録" data-title="最強ジャンプ 2026年8月号 (DBFWカード「孫悟飯：SH」付録)" data-img="2.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="2.png" alt="最強ジャンプ" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -211,9 +143,9 @@
         </a>
 
         <!-- 3. DBカードゲームマスターズ (7月3日) -->
-        <a href="https://www.dbs-cardgame.com/us-en/" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="3" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="3.png" alt="マスターズ" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=3.png';">
+        <a href="https://www.dbs-cardgame.com/us-en/" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="7" data-date="3" data-datestr="7月3日(金)" data-cat="TCG" data-title="DBカードゲーム マスターズ ULTRA-BOUT Series 04 (海外展開)" data-img="3.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="3.png" alt="マスターズ" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -229,9 +161,9 @@
         </a>
 
         <!-- 4. セル フィギュア (7月7日) -->
-        <a href="https://bsp-prize.jp/item/2789447/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-date="7" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="4.png" alt="セル" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/10b981/ffffff?text=4.png';">
+        <a href="https://bsp-prize.jp/item/2789447/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="7" data-date="7" data-datestr="7月7日(火)" data-cat="フィギュア" data-title="ドラゴンボールZ MATCH MAKERS セル（VS人造人間16号）" data-img="4.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="4.png" alt="セル" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -247,9 +179,9 @@
         </a>
 
         <!-- 5. 16号 フィギュア (7月7日) -->
-        <a href="https://bsp-prize.jp/item/2789446/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-date="7" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="5.png" alt="16号" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/10b981/ffffff?text=5.png';">
+        <a href="https://bsp-prize.jp/item/2789446/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="7" data-date="7" data-datestr="7月7日(火)" data-cat="フィギュア" data-title="ドラゴンボールZ MATCH MAKERS 人造人間16号（VSセル）" data-img="5.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="5.png" alt="16号" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -265,9 +197,9 @@
         </a>
 
         <!-- 6. カリンぬいぐるみ (7月9日) -->
-        <a href="https://bsp-prize.jp/item/2808740/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-date="9" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="6.png" alt="カリンぬいぐるみ" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/10b981/ffffff?text=6.png';">
+        <a href="https://bsp-prize.jp/item/2808740/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="7" data-date="9" data-datestr="7月9日(木)" data-cat="雑貨/ぬい" data-title="ドラゴンボール超 めちゃもふぐっと ほっこりいやされぬいぐるみ～カリン～" data-img="6.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="6.png" alt="カリンぬいぐるみ" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -283,9 +215,9 @@
         </a>
 
         <!-- 7. ラウンドタオルケット (7月9日) -->
-        <a href="https://bsp-prize.jp/item/2860609/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-date="9" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-green-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="7.png" alt="タオルケット" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=7.png';">
+        <a href="https://bsp-prize.jp/item/2860609/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="7" data-date="9" data-datestr="7月9日(木)" data-cat="雑貨/ぬい" data-title="ドラゴンボール ラウンドタオルケット" data-img="7.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="7.png" alt="タオルケット" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -301,9 +233,9 @@
         </a>
 
         <!-- 8. 一番くじ店頭 (7月11日) -->
-        <a href="https://1kuji.com/products/db_sb" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="11" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="8.png" alt="一番くじ店頭" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=8.png';">
+        <a href="https://1kuji.com/products/db_sb" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="7" data-date="11" data-datestr="7月11日(土)" data-cat="くじ" data-title="一番くじ ドラゴンボール スペクタクルバトル（店頭販売：ファミマ等）" data-img="8.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="8.png" alt="一番くじ店頭" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -319,9 +251,9 @@
         </a>
 
         <!-- 9. 一番くじONLINE (7月14日) -->
-        <a href="https://on-line.1kuji.com/Form/Product/ProductDetail.aspx?pid=sap_0000008566&bid=IP00002048" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="14" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="9.png" alt="一番くじONLINE" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=9.png';">
+        <a href="https://on-line.1kuji.com/Form/Product/ProductDetail.aspx?pid=sap_0000008566&bid=IP00002048" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="7" data-date="14" data-datestr="7月14日(火)" data-cat="くじ" data-title="一番くじ ドラゴンボール スペクタクルバトル（一番くじONLINE販売 13:00〜）" data-img="9.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="9.png" alt="一番くじONLINE" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -337,9 +269,9 @@
         </a>
 
         <!-- 10. ワーコレ (7月14日) -->
-        <a href="https://bsp-prize.jp/item/2839971/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-date="14" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="10.png" alt="ワーコレ" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/10b981/ffffff?text=10.png';">
+        <a href="https://bsp-prize.jp/item/2839971/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="7" data-date="14" data-datestr="7月14日(火)" data-cat="フィギュア" data-title="ワールドコレクタブルフィギュア-少年期編4-" data-img="10.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="10.png" alt="ワーコレ" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -355,9 +287,9 @@
         </a>
 
         <!-- 11. ピッコロ 出陣 (7月14日) -->
-        <a href="https://bsp-prize.jp/item/2794204/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-date="14" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="11.png" alt="ピッコロ" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/10b981/ffffff?text=11.png';">
+        <a href="https://bsp-prize.jp/item/2794204/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="7" data-date="14" data-datestr="7月14日(火)" data-cat="フィギュア" data-title="ドラゴンボールZ SOLID EDGE WORKS-THE出陣-ピッコロ" data-img="11.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="11.png" alt="ピッコロ" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -373,9 +305,9 @@
         </a>
 
         <!-- 12. ステンレスボトル (7月14日) -->
-        <a href="https://bsp-prize.jp/item/2860620/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-date="14" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="12.png" alt="ボトル" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/10b981/ffffff?text=12.png';">
+        <a href="https://bsp-prize.jp/item/2860620/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="7" data-date="14" data-datestr="7月14日(火)" data-cat="雑貨" data-title="ドラゴンボール ステンレスボトル" data-img="12.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="12.png" alt="ボトル" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -390,10 +322,10 @@
           </div>
         </a>
 
-        <!-- 29. ジャンプビクトリーカーニバル 2026（東京会場） (7月19日) [追加分] -->
-        <a href="https://promo.shonenjump.com/jvc/" target="_blank" rel="noopener noreferrer" data-type="イベント" data-date="19" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-yellow-500 hover:bg-yellow-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="29.png" alt="JVC東京" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/eab308/ffffff?text=29.png';">
+        <!-- 29. ジャンプビクトリーカーニバル 2026（東京会場） (7月19日) -->
+        <a href="https://promo.shonenjump.com/jvc/" target="_blank" rel="noopener noreferrer" data-type="イベント" data-month="7" data-date="19" data-datestr="7月19日(日)" data-cat="イベント" data-title="ジャンプビクトリーカーニバル 2026（東京会場：幕張メッセ）" data-img="29.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-yellow-500 hover:bg-yellow-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="29.png" alt="JVC東京" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -409,9 +341,9 @@
         </a>
 
         <!-- 13. イタジャガ (7月20日) -->
-        <a href="https://www.bandai.co.jp/candy/products/2026/4570117930812000.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="20" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="13.png" alt="イタジャガ" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=13.png';">
+        <a href="https://www.bandai.co.jp/candy/products/2026/4570117930812000.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="7" data-date="20" data-datestr="7月20日(月)" data-cat="食玩" data-title="イタジャガ ドラゴンボール vol.10" data-img="13.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="13.png" alt="イタジャガ" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -426,10 +358,10 @@
           </div>
         </a>
 
-        <!-- 30. Vジャンプ 2026年9月号 (7月21日) [追加分] -->
-        <a href="https://dragon-ball-official.com/news/01_4253.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="21" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="30.png" alt="Vジャンプ" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=30.png';">
+        <!-- 30. Vジャンプ 2026年9月号 (7月21日) -->
+        <a href="https://vjump.shueisha.co.jp/" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="7" data-date="21" data-datestr="7月21日(火)" data-cat="書籍" data-title="Vジャンプ 2026年9月号 (Sダイバーズカード「孫悟飯：少年期」付録)" data-img="30.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="30.png" alt="Vジャンプ" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -437,7 +369,7 @@
               <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発売</span>
               <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">書籍</span>
             </div>
-            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">Vジャンプ 2026年9月号（DBスーパーカードゲーム フュージョンワールド「ケフラ」付録）</p>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">Vジャンプ 2026年9月号 (Sダイバーズカード「孫悟飯：少年期」付録)</p>
           </div>
           <div class="text-gray-400 pr-1 flex-shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
@@ -445,9 +377,9 @@
         </a>
 
         <!-- 14. Grandista (7月22日) -->
-        <a href="https://bsp-prize.jp/item/2789973/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-date="22" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="14.png" alt="Grandista" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/10b981/ffffff?text=14.png';">
+        <a href="https://bsp-prize.jp/item/2789973/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="7" data-date="22" data-datestr="7月22日(水)" data-cat="フィギュア" data-title="ドラゴンボール超 Grandista-SON GOKU-Ⅲ" data-img="14.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="14.png" alt="Grandista" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -463,9 +395,9 @@
         </a>
 
         <!-- 15. 悟飯フィギュア (7月23日) -->
-        <a href="https://bsp-prize.jp/item/2794207/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-date="23" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="15.png" alt="悟飯" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/10b981/ffffff?text=15.png';">
+        <a href="https://bsp-prize.jp/item/2794207/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="7" data-date="23" data-datestr="7月23日(木)" data-cat="フィギュア" data-title="ドラゴンボールZ BLOOD OF SAIYANS-超サイヤ人孫悟飯-Ⅱ" data-img="15.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="15.png" alt="悟飯" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -481,9 +413,9 @@
         </a>
 
         <!-- 16. SDCC 2026 (7月23日〜26日) -->
-        <a href="https://en.dragon-ball-official.com/news/01_4220.html" target="_blank" rel="noopener noreferrer" data-type="イベント" data-date="23.5" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-yellow-500 hover:bg-yellow-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="16.png" alt="SDCC" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/eab308/ffffff?text=16.png';">
+        <a href="https://en.dragon-ball-official.com/news/01_4220.html" target="_blank" rel="noopener noreferrer" data-type="イベント" data-month="7" data-date="23.5" data-datestr="7月23日〜26日" data-cat="海外限定品" data-title="SDCC 2026 海外限定 S.H.Figuarts（ゴテンクス、ゴジータ、DAIMA悟空）" data-img="16.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-yellow-500 hover:bg-yellow-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="16.png" alt="SDCC" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -499,9 +431,9 @@
         </a>
 
         <!-- 17. S.H.Figuarts 悟空 (7月25日) -->
-        <a href="https://tamashiiweb.com/item/15645/" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="25" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="17.png" alt="悟空" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=17.png';">
+        <a href="https://tamashiiweb.com/item/15645/" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="7" data-date="25" data-datestr="7月25日(土)" data-cat="アクション" data-title="S.H.Figuarts 超サイヤ人ゴッド超サイヤ人孫悟空〈限界を超えし蒼き力〉" data-img="17.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="17.png" alt="悟空" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -517,9 +449,9 @@
         </a>
 
         <!-- 18. ピッコロ再販 (7月25日) -->
-        <a href="https://tamashiiweb.com/item/13830/" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="25" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="18.png" alt="ピッコロ再販" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=18.png';">
+        <a href="https://tamashiiweb.com/item/13830/" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="7" data-date="25" data-datestr="7月25日(土)" data-cat="アクション" data-title="【再販】S.H.Figuarts ピッコロ SUPER HERO" data-img="18.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="18.png" alt="ピッコロ再販" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -535,9 +467,9 @@
         </a>
 
         <!-- 19. トランクス再販 (7月25日) -->
-        <a href="https://tamashiiweb.com/item/14349/" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="25" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="19.png" alt="トランクス再販" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=19.png';">
+        <a href="https://tamashiiweb.com/item/14349/" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="7" data-date="25" data-datestr="7月25日(土)" data-cat="アクション" data-title="【再販】スーパーサイヤ人トランクス-その身に秘めしスーパーパワー-" data-img="19.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="19.png" alt="トランクス再販" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -552,10 +484,10 @@
           </div>
         </a>
 
-        <!-- 31. ジャンプビクトリーカーニバル 2026（大阪会場） (7月25日) [追加分] -->
-        <a href="https://promo.shonenjump.com/jvc/" target="_blank" rel="noopener noreferrer" data-type="イベント" data-date="25" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-yellow-500 hover:bg-yellow-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="31.png" alt="JVC大阪" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/eab308/ffffff?text=31.png';">
+        <!-- 31. ジャンプビクトリーカーニバル 2026（大阪会場） (7月25日) -->
+        <a href="https://promo.shonenjump.com/jvc/" target="_blank" rel="noopener noreferrer" data-type="イベント" data-month="7" data-date="25" data-datestr="7月25日(土)" data-cat="イベント" data-title="ジャンプビクトリーカーニバル 2026（大阪会場：インテックス大阪）" data-img="31.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-yellow-500 hover:bg-yellow-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="31.png" alt="JVC大阪" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -571,9 +503,9 @@
         </a>
 
         <!-- 20. History Box 魔人ブウ (7月29日) -->
-        <a href="https://bsp-prize.jp/item/2785669/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-date="29" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="20.png" alt="魔人ブウ" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/10b981/ffffff?text=20.png';">
+        <a href="https://bsp-prize.jp/item/2785669/" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="7" data-date="29" data-datestr="7月29日(水)" data-cat="フィギュア" data-title="ドラゴンボールZ History Box 魔人ブウ" data-img="20.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="20.png" alt="魔人ブウ" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -588,13 +520,10 @@
           </div>
         </a>
 
-
-        <!-- ==================== ここから「順次」発送・発売アイテム (data-date="99"で最後尾固定) ==================== -->
-
-        <!-- 21. ガシャポン DUAL BURST (順次) -->
-        <a href="https://dragon-ball-official.com/news/01_4213.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="99" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="21.png" alt="DUAL BURST" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=21.png';">
+        <!-- 21. ガシャポン DUAL BURST (7月順次) -->
+        <a href="https://dragon-ball-official.com/news/01_4213.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="7" data-date="99" data-datestr="7月（順次）" data-cat="ガシャポン" data-title="ガシャポン ドラボール DUAL BURST（1回500円）" data-img="21.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="21.png" alt="DUAL BURST" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -602,17 +531,17 @@
               <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発売</span>
               <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">ガシャポン</span>
             </div>
-            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ガシャポン ドラゴンボール DUAL BURST（1回500円）</p>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ガシャポン ドラボール DUAL BURST（1回500円）</p>
           </div>
           <div class="text-gray-400 pr-1 flex-shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
           </div>
         </a>
 
-        <!-- 22. クリアラバーコースター2 (順次) -->
-        <a href="https://dragon-ball-official.com/news/01_4161.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-date="99" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="22.png" alt="コースター" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ef4444/ffffff?text=22.png';">
+        <!-- 22. クリアラバーコースター2 (7月順次) -->
+        <a href="https://dragon-ball-official.com/news/01_4161.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="7" data-date="99" data-datestr="7月（順次）" data-cat="ガシャポン" data-title="ガシャポン クリアラバーコースター2（1回400円）" data-img="22.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="22.png" alt="コースター" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -627,10 +556,10 @@
           </div>
         </a>
 
-        <!-- 23. フュージョンワールド FB04 (順次) -->
-        <a href="https://p-bandai.jp/item/item-1000252487/?srsltid=AfmBOoqwSCQsqeDp4pOzoJ-LhLBeyfIn3cK4N9zE41TOGpw_2zbE3eDa" target="_blank" rel="noopener noreferrer" data-type="発送" data-date="99" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="23.png" alt="FB04" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/a855f7/ffffff?text=23.png';">
+        <!-- 23. フュージョンワールド FB04 (7月順次) -->
+        <a href="https://p-bandai.jp/item/item-1000252487/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="7" data-date="99" data-datestr="7月（順次）" data-cat="TCG" data-title="【プレミアムバンダイ】DBスーパーカードゲーム フュージョンワールド FB04 BOX" data-img="23.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="23.png" alt="FB04" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -645,10 +574,10 @@
           </div>
         </a>
 
-        <!-- 24. カメハウスセット (順次) -->
-        <a href="https://p-bandai.jp/item/item-1000246833/?srsltid=AfmBOopT24ZQUQH0NHPKCp7FW2rXRIn3U57wTR9z6Bckoa7EJuMwhs6C" target="_blank" rel="noopener noreferrer" data-type="発送" data-date="99" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="24.png" alt="カメハウス" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/a855f7/ffffff?text=24.png';">
+        <!-- 24. カメハウスセット (7月順次) -->
+        <a href="https://p-bandai.jp/item/item-1000246833/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="7" data-date="99" data-datestr="7月（順次）" data-cat="ワーコレ" data-title="【プレミアムバンダイ】ワーコレ PREMIUM-カメハウスセット-" data-img="24.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="24.png" alt="カメハウス" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -663,10 +592,10 @@
           </div>
         </a>
 
-        <!-- 25. DAIMAワーコレ PREMIUM (順次) -->
-        <a href="https://p-bandai.jp/item/item-1000244177/?srsltid=AfmBOor-_mjvUD1qF7KDzGrSqyjWxWqk9CfkD90KtirTyceTm8dMKABl" target="_blank" rel="noopener noreferrer" data-type="発送" data-date="99" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="25.png" alt="DAIMAワーコレ" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/a855f7/ffffff?text=25.png';">
+        <!-- 25. DAIMAワーコレ PREMIUM (7月順次) -->
+        <a href="https://p-bandai.jp/item/item-1000244177/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="7" data-date="99" data-datestr="7月（順次）" data-cat="ワーコレ" data-title="【プレミアムバンダイ】ドラゴンボールDAIMA ワーコレ PREMIUM vol.3" data-img="25.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="25.png" alt="DAIMAワーコレ" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -681,10 +610,10 @@
           </div>
         </a>
 
-        <!-- 26. Figuarts 怒りの戦士 (順次) -->
-        <a href="https://p-bandai.jp/item/item-1000236267/?srsltid=AfmBOopBVF-Oos7y1eKfkSFwMmhTUpqbDCPPvzon1-W8xpOG3Uet4jrB" target="_blank" rel="noopener noreferrer" data-type="発送" data-date="99" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="26.png" alt="怒りの戦士" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/a855f7/ffffff?text=26.png';">
+        <!-- 26. Figuarts 怒りの戦士 (7月順次) -->
+        <a href="https://p-bandai.jp/item/item-1000236267/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="7" data-date="99" data-datestr="7月（順次）" data-cat="アクション" data-title="【プレミアムバンダイ】S.H.Figuarts 超サイヤ人孫悟空＜怒りの戦士＞" data-img="26.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="26.png" alt="怒りの戦士" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -699,10 +628,10 @@
           </div>
         </a>
 
-        <!-- 27. 親子かめはめ波 MASTERLISE (順次) -->
-        <a href="https://dragon-ball-official.com/news/01_3897.html" target="_blank" rel="noopener noreferrer" data-type="発送" data-date="99" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="27.png" alt="親子かめはめ波" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/a855f7/ffffff?text=27.png';">
+        <!-- 27. 親子かめはめ波 MASTERLISE (7月順次) -->
+        <a href="https://dragon-ball-official.com/news/01_3897.html" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="7" data-date="99" data-datestr="7月（順次）" data-cat="応募者全員" data-title="【Vジャンプ応募者全員サービス】親子かめはめ波フィギュア (MASTERLISE)" data-img="27.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="27.png" alt="親子かめはめ波" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -717,10 +646,10 @@
           </div>
         </a>
 
-        <!-- 32. フュージョンワールド FB06 (順次) [追加分] -->
-        <a href="https://p-bandai.jp/item/item-1000252484/" target="_blank" rel="noopener noreferrer" data-type="発送" data-date="99" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
-          <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 text-gray-300 overflow-hidden">
-            <img src="32.png" alt="FB06" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/a855f7/ffffff?text=32.png';">
+        <!-- 32. フュージョンワールド FB06 (7月順次) -->
+        <a href="https://p-bandai.jp/item/item-1000252484/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="7" data-date="99" data-datestr="7月（順次）" data-cat="TCG" data-title="【プレミアムバンダイ】DBスーパーカードゲーム フュージョンワールド FB06 BOX" data-img="32.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="32.png" alt="FB06" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -729,6 +658,438 @@
               <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">TCG</span>
             </div>
             <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】DBスーパーカードゲーム フュージョンワールド FB06 BOX</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- ドラゴンボールスーパーダイバーズ アドバンスパック バトルオブサイヤン（コンビニ先行？） (8月1日(土)) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="8" data-date="1" data-datestr="8月1日(土)" data-cat="TCG" data-title="ドラゴンボールスーパーダイバーズ アドバンスパック バトルオブサイヤン（コンビニ先行？）" data-img="Sダイバーズ.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="SD.png" alt="ドラゴンボールスーパーダイバーズ アドバンスパック バトルオブサイヤン（コンビニ先行？）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月1日(土)</span>
+              <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発売</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">TCG</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ドラゴンボールスーパーダイバーズ アドバンスパック バトルオブサイヤン（コンビニ先行？）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- ドラゴンボールスーパーダイバーズ アドバンスパック バトルオブサイヤン（一般発売） (8月8日(土)) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="8" data-date="8" data-datestr="8月8日(土)" data-cat="TCG" data-title="ドラゴンボールスーパーダイバーズ アドバンスパック バトルオブサイヤン（一般発売）" data-img="Sダイバーズ.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="SD.png" alt="ドラゴンボールスーパーダイバーズ アドバンスパック バトルオブサイヤン（一般発売）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月8日(土)</span>
+              <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発売</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">TCG</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ドラゴンボールスーパーダイバーズ アドバンスパック バトルオブサイヤン（一般発売）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- DBスーパーカードゲーム フュージョンワールド STORY BOOSTER 01 (8月) -->
+        <a href="https://www.dbs-cardgame.com/fw/jp/products/01_401.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="8" data-date="99" data-datestr="8月8日(土)" data-cat="TCG" data-title="DBスーパーカードゲーム フュージョンワールド STORY BOOSTER 01" data-img="33.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="33.png" alt="DBスーパーカードゲーム フュージョンワールド STORY BOOSTER 01" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月8日(土)</span>
+              <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発売</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">TCG</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">DBスーパーカードゲーム フュージョンワールド STORY BOOSTER 01</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 一番くじ ドラゴンボールGT (8月22日(土)) -->
+        <a href="https://1kuji.com/products/db_gt" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="8" data-date="22" data-datestr="8月22日(土)" data-cat="くじ" data-title="一番くじ ドラゴンボールGT" data-img="34.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="34.png" alt="一番くじ ドラゴンボールGT" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月22日(土)</span>
+              <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発売</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">くじ</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">一番くじ ドラゴンボールGT</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- ガシャポン めじるしアクセサリー4 （1回300円） (8月（順次）) -->
+        <a href="https://dragon-ball-official.com/news/01_4282.html" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="ガシャポン" data-title="ガシャポン めじるしアクセサリー4 （1回300円）" data-img="35.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="35.png" alt="ガシャポン めじるしアクセサリー4 （1回300円）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発売</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">ガシャポン</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ガシャポン めじるしアクセサリー4 （1回300円）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- ガシャポン HGドラゴンボール06 GOKU EDITION2 (8月（順次）) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="ガシャポン" data-title="ガシャポン HGドラゴンボール06 GOKU EDITION2" data-img="36.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="36.png" alt="ガシャポン HGドラゴンボール06 GOKU EDITION2" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発売</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">ガシャポン</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ガシャポン HGドラゴンボール06 GOKU EDITION2</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- ガシャポン 【再販】HGドラゴンボール01 GOKU EDITION (8月（順次）) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" data-type="発売" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="ガシャポン" data-title="ガシャポン 【再販】HGドラゴンボール01 GOKU EDITION" data-img="37.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-red-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="37.png" alt="ガシャポン 【再販】HGドラゴンボール01 GOKU EDITION" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発売</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">ガシャポン</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ガシャポン 【再販】HGドラゴンボール01 GOKU EDITION</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 【プレミアムバンダイ】 S.H.Figuartsフリーザ 第一形態＆フリーザポッド（再販） (8月（順次）) -->
+        <a href="https://tamashiiweb.com/item/13437/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="【プレミアムバンダイ】 S.H.Figuartsフリーザ 第一形態＆フリーザポッド（再販）" data-img="49.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-red-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="49.png" alt="【プレミアムバンダイ】 S.H.Figuartsフリーザ 第一形態＆フリーザポッド（再販）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発売</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】 S.H.Figuartsフリーザ 第一形態＆フリーザポッド（再販）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- ドラゴンボールZ History Box 孫悟天＆トランクス (8月（順次）) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="ドラゴンボールZ History Box 孫悟天＆トランクス" data-img="38.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="38.png" alt="ドラゴンボールZ History Box 孫悟天＆トランクス" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-green-100 text-green-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">プライズ</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ドラゴンボールZ History Box 孫悟天＆トランクス</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- ドラゴンボールZ MATCH MAKERS 魔人ブウ（VS超サイヤ人ゴテンクス） (8月（順次）) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="ドラゴンボールZ MATCH MAKERS 魔人ブウ（VS超サイヤ人ゴテンクス）" data-img="39.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="39.png" alt="ドラゴンボールZ MATCH MAKERS 魔人ブウ（VS超サイヤ人ゴテンクス）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-green-100 text-green-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">プライズ</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ドラゴンボールZ MATCH MAKERS 魔人ブウ（VS超サイヤ人ゴテンクス）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- ドラゴンボールZ MATCH MAKERS 超サイヤ人ゴテンクス（VS魔人ブウ） (8月（順次）) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="ドラゴンボールZ MATCH MAKERS 超サイヤ人ゴテンクス（VS魔人ブウ）" data-img="40.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="40.png" alt="ドラゴンボールZ MATCH MAKERS 超サイヤ人ゴテンクス（VS魔人ブウ）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-green-100 text-green-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">プライズ</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ドラゴンボールZ MATCH MAKERS 超サイヤ人ゴテンクス（VS魔人ブウ）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- ドラゴンボール超 G×materia GOGETA (8月（順次）) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="ドラゴンボール超 G×materia GOGETA" data-img="41.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="41.png" alt="ドラゴンボール超 G×materia GOGETA" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-green-100 text-green-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">プライズ</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ドラゴンボール超 G×materia GOGETA</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- ドラゴンボールZ BLOOD OF SAIYANS-超サイヤ人孫悟空-Ⅱ (8月（順次）) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="ドラゴンボールZ BLOOD OF SAIYANS-超サイヤ人孫悟空-Ⅱ" data-img="42.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="42.png" alt="ドラゴンボールZ BLOOD OF SAIYANS-超サイヤ人孫悟空-Ⅱ" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-green-100 text-green-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">プライズ</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ドラゴンボールZ BLOOD OF SAIYANS-超サイヤ人孫悟空-Ⅱ</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- ワールドコレクタブルフィギュア-少年期編5- (8月（順次）) -->
+        <a href="#" target="_blank" rel="noopener noreferrer" data-type="プライズ" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="ワールドコレクタブルフィギュア-少年期編5-" data-img="43.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-green-500 hover:bg-green-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="43.png" alt="ワールドコレクタブルフィギュア-少年期編5-" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-green-100 text-green-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">プライズ</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">ワールドコレクタブルフィギュア-少年期編5-</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 【プレミアムバンダイ】 フィギュアーツZERO［超激戦］スーパーサイヤ人4孫悟空-DAIMA- (8月（順次）) -->
+        <a href="https://p-bandai.jp/item/item-1000239386/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="【プレミアムバンダイ】 フィギュアーツZERO［超激戦］スーパーサイヤ人4孫悟空-DAIMA-" data-img="44.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="44.png" alt="【プレミアムバンダイ】 フィギュアーツZERO［超激戦］スーパーサイヤ人4孫悟空-DAIMA-" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発送</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】 フィギュアーツZERO［超激戦］スーパーサイヤ人4孫悟空-DAIMA-</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 【プレミアムバンダイ】 SUPER MASTER STARS PIECE 孫悟空 身勝手の極意（2次発送分） (8月（順次）) -->
+        <a href="https://p-bandai.jp/item/item-1000245677/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="【プレミアムバンダイ】 SUPER MASTER STARS PIECE 孫悟空 身勝手の極意（2次発送分）" data-img="45.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="45.png" alt="【プレミアムバンダイ】 SUPER MASTER STARS PIECE 孫悟空 身勝手の極意（2次発送分）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発送</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】 SUPER MASTER STARS PIECE 孫悟空 身勝手の極意（2次発送分）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 【プレミアムバンダイ】 SUPER MASTER STARS PIECE 孫悟空（2次発送分） (8月（順次）) -->
+        <a href="https://p-bandai.jp/item/item-1000245678/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="【プレミアムバンダイ】 SUPER MASTER STARS PIECE 孫悟空（2次発送分）" data-img="46.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="46.png" alt="【プレミアムバンダイ】 SUPER MASTER STARS PIECE 孫悟空（2次発送分）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発送</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】 SUPER MASTER STARS PIECE 孫悟空（2次発送分）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 【プレミアムバンダイ】 SUPER MASTER STARS PIECE ベジータ（2次発送分） (8月（順次）) -->
+        <a href="https://p-bandai.jp/item/item-1000245682/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="【プレミアムバンダイ】 SUPER MASTER STARS PIECE ベジータ（2次発送分）" data-img="47.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="47.png" alt="【プレミアムバンダイ】 SUPER MASTER STARS PIECE ベジータ（2次発送分）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発送</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】 SUPER MASTER STARS PIECE ベジータ（2次発送分）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 【プレミアムバンダイ】 S.H.Figuarts バーダック-たったひとりの最終決戦- (8月（順次）) -->
+        <a href="https://p-bandai.jp/item/item-1000240253/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="フィギュア" data-title="【プレミアムバンダイ】 S.H.Figuarts バーダック-たったひとりの最終決戦-" data-img="48.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="48.png" alt="【プレミアムバンダイ】 S.H.Figuarts バーダック-たったひとりの最終決戦-" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発送</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">フィギュア</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】 S.H.Figuarts バーダック-たったひとりの最終決戦-</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 【プレミアムバンダイ】 ドラゴンボールZ ミスター・サタンのチャンピオンベルト（再販・4次） (8月（順次）) -->
+        <a href="https://p-bandai.jp/item/item-1000252145/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="雑貨" data-title="【プレミアムバンダイ】 ドラゴンボールZ ミスター・サタンのチャンピオンベルト（再販・4次）" data-img="50.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="50.png" alt="【プレミアムバンダイ】 ドラゴンボールZ ミスター・サタンのチャンピオンベルト（再販・4次）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発送</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">雑貨</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】 ドラゴンボールZ ミスター・サタンのチャンピオンベルト（再販・4次）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 【プレミアムバンダイ】 ドラゴンボールZ 魔人ブウのベルト（再販・9次） (8月（順次）) -->
+        <a href="https://p-bandai.jp/item/item-1000252143/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="雑貨" data-title="【プレミアムバンダイ】 ドラゴンボールZ 魔人ブウのベルト（再販・9次）" data-img="51.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="51.png" alt="【プレミアムバンダイ】 ドラゴンボールZ 魔人ブウのベルト（再販・9次）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発送</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">雑貨</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】 ドラゴンボールZ 魔人ブウのベルト（再販・9次）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 【プレミアムバンダイ】 ドラゴンボールDAIMA ポタラのピアス/イヤリング（界王神）（再販・6次） (8月（順次）) -->
+        <a href="https://p-bandai.jp/item/item-1000252142/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="雑貨" data-title="【プレミアムバンダイ】 ドラゴンボールDAIMA ポタラのピアス/イヤリング（界王神）（再販・6次）" data-img="52.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="52.png" alt="【プレミアムバンダイ】 ドラゴンボールDAIMA ポタラのピアス/イヤリング（界王神）（再販・6次）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発送</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">雑貨</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】 ドラゴンボールDAIMA ポタラのピアス/イヤリング（界王神）（再販・6次）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 【プレミアムバンダイ】 ドラゴンボールZ 宇宙船ポッド ポーチコレクション（再販） (8月（順次）) -->
+        <a href="https://p-bandai.jp/item/item-1000252155/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="雑貨" data-title="【プレミアムバンダイ】 ドラゴンボールZ 宇宙船ポッド ポーチコレクション（再販）" data-img="53.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="53.png" alt="【プレミアムバンダイ】 ドラゴンボールZ 宇宙船ポッド ポーチコレクション（再販）" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発送</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">雑貨</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【プレミアムバンダイ】 ドラゴンボールZ 宇宙船ポッド ポーチコレクション（再販）</p>
+          </div>
+          <div class="text-gray-400 pr-1 flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </a>
+
+        <!-- 【抽選販売】 ドラゴンボールスーパーカードゲーム FW オフィシャルプレイマット＆カードセット Limited Edition 01 BCGF事後販売 (8月（順次）) -->
+        <a href="https://p-bandai.jp/item/item-1000247506/" target="_blank" rel="noopener noreferrer" data-type="発送" data-month="8" data-date="99" data-datestr="8月（順次）" data-cat="雑貨" data-title="【抽選販売】 ドラゴンボールスーパーカードゲーム FW オフィシャルプレイマット＆カードセット Limited Edition 01 BCGF事後販売" data-img="54.png" class="item-card block bg-white p-3 rounded-xl shadow-sm border-l-4 border-purple-500 hover:bg-purple-50/50 transition flex gap-3 items-center">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center border border-gray-200 flex-shrink-0 overflow-hidden bg-gray-100">
+            <img src="54.png" alt="【抽選販売】 ドラゴンボールスーパーカードゲーム FW オフィシャルプレイマット＆カードセット Limited Edition 01 BCGF事後販売" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML='<div class=\'w-full h-full no-image-box text-[10px] leading-tight\'>No<br>Image</div>';">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5 mb-1">
+              <span class="text-sm md:text-base font-black text-gray-800 w-[6.5rem]">8月（順次）</span>
+              <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded">発送</span>
+              <span class="text-gray-500 text-[10px] md:text-xs font-bold border border-gray-200 bg-gray-100 px-1.5 py-0.5 rounded">雑貨</span>
+            </div>
+            <p class="font-bold text-gray-800 text-xs md:text-sm leading-tight truncate">【抽選販売】 ドラゴンボールスーパーカードゲーム FW オフィシャルプレイマット＆カードセット Limited Edition 01 BCGF事後販売</p>
           </div>
           <div class="text-gray-400 pr-1 flex-shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
@@ -1474,61 +1835,237 @@
           </div>
         </a>
       
-        
-        
 
       </div>
     </div>
   </div>
 
+  <!-- 画像拡大＆情報表示用モーダル（ポップアップ） -->
+  <div id="image-modal" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300" onclick="closeModal(event)">
+    <div class="bg-white rounded-2xl max-w-sm w-full overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 relative" id="modal-content" onclick="event.stopPropagation()">
+      <!-- 閉じるボタン -->
+      <button onclick="closeModal()" class="absolute top-3 right-3 bg-black/50 hover:bg-black/70 text-white rounded-full w-8 h-8 flex items-center justify-center transition z-10">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+      
+      <!-- 大きな画像部分 -->
+      <div id="modal-img-container" class="w-full aspect-square bg-gray-100 flex items-center justify-center border-b border-gray-200">
+        <img id="modal-img" src="" alt="拡大画像" class="w-full h-full object-contain">
+      </div>
+      
+      <!-- 商品情報部分 -->
+      <div class="p-5 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span id="modal-date" class="text-lg font-black text-gray-800"></span>
+          <span id="modal-type" class="text-xs font-bold px-2.5 py-1 rounded"></span>
+          <span id="modal-cat" class="text-gray-500 text-xs font-bold border border-gray-200 bg-gray-100 px-2 py-1 rounded"></span>
+        </div>
+        <p id="modal-title" class="font-bold text-gray-800 text-base leading-snug"></p>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // ページロード時に自動で日付順にソートする処理
+    let currentMonthFilter = 'all';
+    let currentCategoryFilter = 'all';
+
     document.addEventListener("DOMContentLoaded", () => {
+      // リンク制御の設定（#の場合はモーダルを開く）
+      setupLinks();
+      
+      // 1. まずHTMLの並びを月->日付順に完璧にソートする
       sortSchedule();
+      
+      // 2. 存在する月に基づいてタブを自動生成する
+      generateMonthTabs();
+
+      // 3. 初期表示の適用（すべて＆すべて）
+      applyFilters();
     });
 
+    // #のリンクをクリックしたときにモーダルを開くように設定
+    function setupLinks() {
+      const cards = document.querySelectorAll('.item-card');
+      cards.forEach(card => {
+        const url = card.getAttribute('href');
+        if (!url || url === '#' || url === '') {
+          card.removeAttribute('target');
+          card.removeAttribute('rel');
+          card.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(card);
+          });
+        }
+      });
+    }
+
+    // 優先度1: data-month (昇順), 優先度2: data-date (昇順) でソート
     function sortSchedule() {
       const list = document.getElementById('schedule-list');
       const cards = Array.from(list.querySelectorAll('.item-card'));
 
-      // data-date属性の数値で比較してソート
       cards.sort((a, b) => {
+        const monthA = parseFloat(a.getAttribute('data-month') || '99');
+        const monthB = parseFloat(b.getAttribute('data-month') || '99');
+        
+        if (monthA !== monthB) {
+          return monthA - monthB;
+        }
+
         const dateA = parseFloat(a.getAttribute('data-date') || '999');
         const dateB = parseFloat(b.getAttribute('data-date') || '999');
         return dateA - dateB;
       });
 
-      // 並び替えた順番通りに親要素に再追加
+      cards.forEach(card => list.appendChild(card));
+    }
+
+    // HTML内に存在する data-month を収集し、タブを生成する
+    function generateMonthTabs() {
+      const container = document.getElementById('month-tabs-container');
+      const cards = document.querySelectorAll('.item-card');
+      const months = new Set();
+
       cards.forEach(card => {
-        list.appendChild(card);
+        const m = card.getAttribute('data-month');
+        if (m && m !== '99') months.add(parseInt(m, 10));
       });
+
+      const sortedMonths = Array.from(months).sort((a, b) => a - b);
+
+      let html = `<button onclick="filterMonth('all')" class="month-tab active bg-white text-gray-700 border border-gray-200 hover:bg-gray-100 text-sm font-bold px-4 py-2 rounded-full transition shadow-sm">すべて</button>`;
+
+      sortedMonths.forEach(m => {
+        html += `<button onclick="filterMonth('${m}')" class="month-tab bg-white text-gray-700 border border-gray-200 hover:bg-gray-100 text-sm font-bold px-4 py-2 rounded-full transition"> ${m}月 </button>`;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function filterMonth(month) {
+      currentMonthFilter = month;
+      
+      const tabs = document.querySelectorAll('.month-tab');
+      tabs.forEach(tab => {
+        tab.classList.remove('active', 'bg-orange-500', 'text-white', 'shadow-sm');
+        tab.classList.add('bg-white', 'text-gray-700');
+        if ((month === 'all' && tab.innerText.includes('すべて')) || tab.innerText.trim() === `${month}月`) {
+          tab.classList.remove('bg-white', 'text-gray-700');
+          tab.classList.add('active', 'bg-orange-500', 'text-white', 'shadow-sm');
+        }
+      });
+
+      applyFilters();
     }
 
     function filterCategory(type) {
-      // フィルターボタンのアクティブ状態の切り替え
+      currentCategoryFilter = type;
+
       const buttons = document.querySelectorAll('.filter-btn');
       buttons.forEach(btn => {
         btn.classList.remove('bg-orange-500', 'text-white', 'active', 'shadow-sm');
-        btn.classList.add('bg-white', 'text-gray-700', 'border-gray-200');
+        btn.classList.add('bg-white', 'text-gray-700');
+        if ((type === 'all' && btn.innerText === 'すべて') || btn.innerText === type) {
+          btn.classList.remove('bg-white', 'text-gray-700');
+          btn.classList.add('bg-orange-500', 'text-white', 'active', 'shadow-sm');
+        }
       });
 
-      // 押されたボタンをアクティブにする
-      const activeBtn = event ? event.target : [...buttons].find(b => b.innerText === type || (type === 'all' && b.innerText === 'すべて'));
-      if (activeBtn) {
-        activeBtn.classList.remove('bg-white', 'text-gray-700', 'border-gray-200');
-        activeBtn.classList.add('bg-orange-500', 'text-white', 'active', 'shadow-sm');
-      }
+      applyFilters();
+    }
 
-      // 各アイテムカードのフィルタリング表示
+    function applyFilters() {
       const cards = document.querySelectorAll('.item-card');
+      
       cards.forEach(card => {
-        const dataType = card.getAttribute('data-type');
-        if (type === 'all' || dataType.includes(type)) {
+        const cardMonth = card.getAttribute('data-month');
+        const cardType = card.getAttribute('data-type');
+
+        const matchMonth = (currentMonthFilter === 'all' || cardMonth === currentMonthFilter || (currentMonthFilter === 'all' && cardMonth === '99')); 
+        const matchCategory = (currentCategoryFilter === 'all' || cardType.includes(currentCategoryFilter));
+
+        if (matchMonth && matchCategory) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
       });
+    }
+
+    // --- モーダル制御関数 ---
+    
+    // 種別による色のマッピング
+    const typeStyles = {
+        '予約開始': { bg: 'bg-blue-100', text: 'text-blue-800' },
+        '発売':     { bg: 'bg-red-100', text: 'text-red-800' },
+        'プライズ': { bg: 'bg-green-100', text: 'text-green-800' },
+        'イベント': { bg: 'bg-yellow-100', text: 'text-yellow-800' },
+        '発送':     { bg: 'bg-purple-100', text: 'text-purple-800' }
+    };
+
+    function openModal(cardElement) {
+      const modal = document.getElementById('image-modal');
+      const content = document.getElementById('modal-content');
+      
+      // データ取得
+      const type = cardElement.getAttribute('data-type');
+      const dateStr = cardElement.getAttribute('data-datestr');
+      const cat = cardElement.getAttribute('data-cat');
+      const title = cardElement.getAttribute('data-title');
+      const imgSrc = cardElement.getAttribute('data-img');
+
+      // データセット
+      document.getElementById('modal-date').innerText = dateStr;
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-cat').innerText = cat;
+      
+      const typeBadge = document.getElementById('modal-type');
+      typeBadge.innerText = type;
+      typeBadge.className = 'text-xs font-bold px-2.5 py-1 rounded'; // 初期化
+      if(typeStyles[type]) {
+        typeBadge.classList.add(typeStyles[type].bg, typeStyles[type].text);
+      } else {
+        typeBadge.classList.add('bg-gray-200', 'text-gray-800');
+      }
+
+      // 画像のセットとエラー（No Image）処理
+      const imgContainer = document.getElementById('modal-img-container');
+      if (!imgSrc || imgSrc === 'dummy.png') {
+        imgContainer.innerHTML = `<div class="w-full h-full no-image-box text-xl">No Image</div>`;
+      } else {
+        imgContainer.innerHTML = `<img id="modal-img" src="${imgSrc}" alt="拡大画像" class="w-full h-full object-contain">`;
+        const newImg = document.getElementById('modal-img');
+        newImg.onerror = function() {
+          imgContainer.innerHTML = `<div class="w-full h-full no-image-box text-xl">No Image</div>`;
+        };
+      }
+
+      // 表示アニメーション
+      modal.classList.remove('hidden');
+      // 少し遅らせてopacityを変えることでCSSトランジションを効かせる
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeModal(event) {
+      // 背景クリックか、閉じるボタンクリック時のみ閉じる
+      if (event && event.target.id !== 'image-modal') return;
+
+      const modal = document.getElementById('image-modal');
+      const content = document.getElementById('modal-content');
+
+      // 非表示アニメーション
+      modal.classList.add('opacity-0');
+      content.classList.remove('scale-100');
+      content.classList.add('scale-95');
+
+      // アニメーション完了後にDOMから隠す
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
     }
   </script>
 
